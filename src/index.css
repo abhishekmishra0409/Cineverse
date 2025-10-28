@@ -1,0 +1,24 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+.scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Custom Swiper navigation styles */
+.swiper-button-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.swiper-slide {
+    height: auto;
+}
+
+.swiper-wrapper {
+    align-items: stretch;
+}
+
+/* Smooth scrolling for swiper */
+.swiper-container {
+    -webkit-overflow-scrolling: touch;
+}

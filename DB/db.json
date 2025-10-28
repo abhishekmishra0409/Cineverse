@@ -1,0 +1,181 @@
+{
+  "users": [
+    {
+      "username": "admin",
+      "password": "1234",
+      "email": "admin@gmail.com",
+      "phone": "1234567890",
+      "id": "64bd"
+    },
+    {
+      "id": "e693",
+      "username": "adminss",
+      "email": "abhishekmishra0409@gmail.com",
+      "phone": "74899779784",
+      "password": "1234"
+    },
+    {
+      "id": "fe25",
+      "username": "abhishekmishra0409",
+      "email": "abhishekmishra0409@gmail.com",
+      "phone": "07489977978",
+      "password": "1234"
+    },
+    {
+      "id": "28df",
+      "username": "adityanema",
+      "email": "adityanema@gmail.com",
+      "phone": "+1 (906) 347-3053",
+      "password": "1234"
+    }
+  ],
+  "favourite": [
+    {
+      "id": "1caf",
+      "userId": "64bd",
+      "movie": {
+        "id": 1156594,
+        "title": "Our Fault",
+        "poster_path": "/yzqHt4m1SeY9FbPrfZ0C2Hi9x1s.jpg",
+        "release_date": "2025-10-15",
+        "vote_average": 7.636
+      }
+    },
+    {
+      "id": "1439",
+      "userId": "64bd",
+      "movie": {
+        "id": 1086910,
+        "title": "The Lost Princess",
+        "poster_path": "/31S2ISsDtbnxb0kuXZl1SxSMD0K.jpg",
+        "release_date": "2025-10-16",
+        "vote_average": 6.3
+      }
+    },
+    {
+      "id": "52fb",
+      "userId": "64bd",
+      "movie": {
+        "id": 1305717,
+        "title": "Hunting Grounds",
+        "poster_path": "/cgZjpqRQt9sk6XMCwZ3B1NPAaoy.jpg",
+        "release_date": "2025-05-16",
+        "vote_average": 6.293
+      }
+    },
+    {
+      "id": "4f90",
+      "userId": "64bd",
+      "movie": {
+        "id": 1306525,
+        "title": "The Elixir",
+        "poster_path": "/wvWRCDR0wScmrJVAh2iipBSxkZw.jpg",
+        "release_date": "2025-10-22",
+        "vote_average": 5.57
+      }
+    },
+    {
+      "id": "db68",
+      "userId": "64bd",
+      "movie": {
+        "id": 37854,
+        "vote_average": 8.7,
+        "poster_path": "/cMD9Ygz11zjJzAovURpO75Qg7rT.jpg",
+        "name": "One Piece",
+        "first_air_date": "1999-10-20"
+      }
+    },
+    {
+      "id": "39f0",
+      "userId": "64bd",
+      "movie": {
+        "id": 755898,
+        "title": "War of the Worlds",
+        "poster_path": "/yvirUYrva23IudARHn3mMGVxWqM.jpg",
+        "release_date": "2025-07-29",
+        "vote_average": 4.3
+      }
+    },
+    {
+      "id": "1afa",
+      "userId": "64bd",
+      "movie": {
+        "id": 1422096,
+        "title": "Good Boy",
+        "poster_path": "/pvMHRi09ur2L1drXh2dXFtuMFgl.jpg",
+        "release_date": "2025-10-01",
+        "vote_average": 7.1
+      }
+    }
+  ],
+  "watchnext": [
+    {
+      "id": "30e0",
+      "userId": "64bd",
+      "movie": {
+        "id": 755898,
+        "title": "War of the Worlds",
+        "poster_path": "/yvirUYrva23IudARHn3mMGVxWqM.jpg",
+        "release_date": "2025-07-29",
+        "vote_average": 4.3
+      }
+    },
+    {
+      "id": "822f",
+      "userId": "64bd",
+      "movie": {
+        "id": 1306525,
+        "title": "The Elixir",
+        "poster_path": "/wvWRCDR0wScmrJVAh2iipBSxkZw.jpg",
+        "release_date": "2025-10-22",
+        "vote_average": 5.57
+      }
+    },
+    {
+      "id": "8e59",
+      "userId": "64bd",
+      "movie": {
+        "id": 1422096,
+        "title": "Good Boy",
+        "poster_path": "/pvMHRi09ur2L1drXh2dXFtuMFgl.jpg",
+        "release_date": "2025-10-01",
+        "vote_average": 7.1
+      }
+    }
+  ],
+  "lastviewed": [
+    {
+      "id": "2d0a",
+      "userId": "64bd",
+      "movie": {
+        "id": 1156594,
+        "title": "Our Fault",
+        "poster_path": "/yzqHt4m1SeY9FbPrfZ0C2Hi9x1s.jpg",
+        "release_date": "2025-10-15",
+        "vote_average": 7.642
+      }
+    },
+    {
+      "id": "1039",
+      "userId": "64bd",
+      "movie": {
+        "id": 755898,
+        "title": "War of the Worlds",
+        "poster_path": "/yvirUYrva23IudARHn3mMGVxWqM.jpg",
+        "release_date": "2025-07-29",
+        "vote_average": 4.3
+      }
+    },
+    {
+      "id": "246d",
+      "userId": "64bd",
+      "movie": {
+        "id": 1422096,
+        "title": "Good Boy",
+        "poster_path": "/pvMHRi09ur2L1drXh2dXFtuMFgl.jpg",
+        "release_date": "2025-10-01",
+        "vote_average": 7.1
+      }
+    }
+  ]
+}
