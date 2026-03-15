@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>CineVerse</title>
+  <script>
+    // Redirect unknown routes back to the SPA entry on GitHub Pages.
+    (function () {
+      var segmentCount = 1;
+      var l = window.location;
+      var repoBase = l.pathname.split('/').slice(0, 1 + segmentCount).join('/');
+      var appPath = l.pathname.slice(1).split('/').slice(segmentCount).join('/');
+      var query = l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '';
+      var target = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + repoBase + '/?/' + appPath.replace(/&/g, '~and~') + query + l.hash;
+      l.replace(target);
+    })();
+  </script>
+</head>
+
+<body></body>
+
+</html>
