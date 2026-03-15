@@ -79,7 +79,7 @@ const Navbar = () => {
                             className="flex items-center space-x-2 md:space-x-3 group"
                         >
                             <img
-                                src="/logo.png"
+                                src={`${import.meta.env.BASE_URL}logo.png`}
                                 className="h-8 md:h-10 object-cover transition-transform duration-300 group-hover:scale-110"
                                 alt="CineVerse Logo"
                             />

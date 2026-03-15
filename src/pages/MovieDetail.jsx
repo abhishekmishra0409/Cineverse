@@ -126,7 +126,7 @@ const MovieDetail = () => {
                     style={{
                         backgroundImage: `url(${currentMovie?.backdrop_path
                             ? `https://image.tmdb.org/t/p/original${currentMovie.backdrop_path}`
-                            : "/NotFound.png"
+                            : `${import.meta.env.BASE_URL}NotFound.png`
                             })`,
                     }}
                 >
@@ -143,7 +143,7 @@ const MovieDetail = () => {
                                 src={
                                     currentMovie?.poster_path
                                         ? `https://image.tmdb.org/t/p/w500${currentMovie.poster_path}`
-                                        : "/NotFound.png"
+                                        : `${import.meta.env.BASE_URL}NotFound.png`
                                 }
                                 alt={currentMovie?.title}
                                 className="w-48 md:w-56 lg:w-64 rounded-lg shadow-2xl ring-4 ring-white/10"

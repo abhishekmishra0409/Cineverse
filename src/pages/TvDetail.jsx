@@ -100,7 +100,7 @@ const TvDetail = () => {
                     style={{
                         backgroundImage: `url(${currentTVSeries?.backdrop_path
                             ? `https://image.tmdb.org/t/p/original${currentTVSeries.backdrop_path}`
-                            : "/NotFound.png"
+                            : `${import.meta.env.BASE_URL}NotFound.png`
                             })`,
                     }}
                 >
@@ -117,7 +117,7 @@ const TvDetail = () => {
                                 src={
                                     currentTVSeries?.poster_path
                                         ? `https://image.tmdb.org/t/p/w500${currentTVSeries.poster_path}`
-                                        : "/NotFound.png"
+                                        : `${import.meta.env.BASE_URL}NotFound.png`
                                 }
                                 alt={currentTVSeries?.name}
                                 className="w-48 md:w-56 lg:w-64 rounded-lg shadow-2xl ring-4 ring-white/10"
@@ -459,7 +459,7 @@ const TvDetail = () => {
                                             src={
                                                 season.poster_path
                                                     ? `https://image.tmdb.org/t/p/w500${season.poster_path}`
-                                                    : "/NotFound.png"
+                                                    : `${import.meta.env.BASE_URL}NotFound.png`
                                             }
                                             alt={season.name}
                                             className="w-full aspect-[2/3] object-cover group-hover:scale-110 transition-transform duration-300"
