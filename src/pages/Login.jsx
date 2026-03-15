@@ -43,19 +43,19 @@ const Login = () => {
     };
 
     return (
-        <div className="h-screen flex justify-center items-center bg-gray-900 dark:bg-gray-900 relative">
+        <div className="min-h-screen flex justify-center items-center bg-gray-100 dark:bg-gray-950 relative px-4 py-8">
             <div
-                className="absolute inset-0 bg-cover bg-center opacity-30 dark:opacity-20"
-                style={{ backgroundImage: `url('./loginbg.jpg')` }}
+                className="absolute inset-0 bg-cover bg-center opacity-20 dark:opacity-25"
+                style={{ backgroundImage: `url('${import.meta.env.BASE_URL}loginbg.jpg')` }}
             ></div>
 
-            <div className="absolute inset-0 bg-black/60 dark:bg-black/70"></div>
+            <div className="absolute inset-0 bg-white/70 dark:bg-black/70 backdrop-blur-[1px]"></div>
 
             <form
                 onSubmit={onSubmit}
-                className="relative z-10 w-full max-w-md p-8 rounded-xl shadow-xl bg-gray-800 dark:bg-gray-900 border border-gray-700 dark:border-gray-600 transition-colors"
+                className="relative z-10 w-full max-w-md p-8 rounded-xl shadow-xl bg-white/95 dark:bg-gray-900/95 border border-gray-200 dark:border-gray-700 transition-colors"
             >
-                <h2 className="text-2xl font-bold text-white mb-6 text-center">Login</h2>
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">Login</h2>
 
                 <InputField
                     label="Username"
@@ -82,17 +82,17 @@ const Login = () => {
                     {isLoading ? "Logging in..." : "Login"}
                 </button>
 
-                <p className="mt-4 text-center text-sm text-gray-200 dark:text-gray-300">
+                <p className="mt-4 text-center text-sm text-gray-700 dark:text-gray-300">
                     Don't have an account?{" "}
                     <Link
                         to="/signup"
-                        className="text-blue-500 dark:text-blue-400 hover:text-blue-400 dark:hover:text-blue-300"
+                        className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300"
                     >
                         Sign Up
                     </Link>
                 </p>
 
-                {message && <p className="text-center mt-4 text-sm text-red-400">{message}</p>}
+                {message && <p className="text-center mt-4 text-sm text-red-600 dark:text-red-400">{message}</p>}
             </form>
         </div>
     );

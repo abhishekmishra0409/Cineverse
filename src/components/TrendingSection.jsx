@@ -6,26 +6,43 @@ import Loading from './Loading';
 
 const TrendingSection = () => {
     const [trendType, setTrendType] = useState('day');
+    const [isSwitching, setIsSwitching] = useState(false);
+    const [displayData, setDisplayData] = useState([]);
     const { trendingDay, trendingWeek, isLoading } = useSelector((state) => state.movies);
     const dispatch = useDispatch();
 
-    const fetchData = useCallback(async () => {
+    const fetchData = useCallback(async (type) => {
+        setIsSwitching(true);
         try {
-            if (trendType === 'day') {
+            if (type === 'day') {
                 await dispatch(dayTrendingMovies());
             } else {
                 await dispatch(weekTrendingMovies());
             }
         } catch (e) {
             console.error(e);
+        } finally {
+            setIsSwitching(false);
         }
-    }, [dispatch, trendType]);
+    }, [dispatch]);
 
     useEffect(() => {
-        fetchData();
-    }, [fetchData, trendType]);
+        const selectedData = trendType === 'day' ? trendingDay : trendingWeek;
+        if (selectedData && selectedData.length > 0) {
+            setDisplayData(selectedData);
+            setIsSwitching(false);
+            return;
+        }
 
-    const trendingData = trendType === 'day' ? trendingDay : trendingWeek;
+        fetchData(trendType);
+    }, [fetchData, trendType, trendingDay, trendingWeek]);
+
+    const handleTrendChange = (type) => {
+        if (type === trendType) return;
+        setTrendType(type);
+    };
+
+    const showInitialLoader = isLoading && displayData.length === 0;
 
     return (
         <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-900">
@@ -44,7 +61,7 @@ const TrendingSection = () => {
                     {/* Trend Type Toggle */}
                     <div className="flex bg-gray-200 dark:bg-gray-800 p-1 rounded-xl border border-gray-300 dark:border-gray-700">
                         <button
-                            onClick={() => setTrendType('day')}
+                            onClick={() => handleTrendChange('day')}
                             className={`px-6 py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 min-w-[100px] ${trendType === 'day'
                                 ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm border border-gray-300 dark:border-gray-600'
                                 : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
@@ -53,7 +70,7 @@ const TrendingSection = () => {
                             Today
                         </button>
                         <button
-                            onClick={() => setTrendType('week')}
+                            onClick={() => handleTrendChange('week')}
                             className={`px-6 py-3 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 min-w-[100px] ${trendType === 'week'
                                 ? 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm border border-gray-300 dark:border-gray-600'
                                 : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
@@ -65,7 +82,7 @@ const TrendingSection = () => {
                 </div>
 
                 {/* Loading State */}
-                {isLoading ? (
+                {showInitialLoader ? (
                     <div className="flex justify-center items-center py-20">
                         <div className="text-center">
                             <Loading />
@@ -77,8 +94,15 @@ const TrendingSection = () => {
                 ) : (
                     <>
                         {/* Movies Grid */}
-                        {trendingData && trendingData.length > 0 ? (
-                            <div className="
+                        {displayData && displayData.length > 0 ? (
+                            <div className="relative">
+                                {isSwitching && (
+                                    <div className="absolute inset-0 z-20 bg-gray-50/70 dark:bg-gray-900/70 backdrop-blur-[1px] flex items-center justify-center rounded-lg">
+                                        <Loading />
+                                    </div>
+                                )}
+
+                                <div className="
                                 grid 
                                 grid-cols-2 
                                 sm:grid-cols-3 
@@ -88,29 +112,30 @@ const TrendingSection = () => {
                                 2xl:grid-cols-5
                                 gap-4 sm:gap-5
                             ">
-                                {trendingData.slice(0, 12).map((movie, index) => (
-                                    <div key={movie.id} className="flex justify-center">
-                                        <div className="relative group">
-                                            {/* Trending Badge for Top 3 */}
-                                            {index < 3 && (
-                                                <div className={`
+                                    {displayData.slice(0, 12).map((movie, index) => (
+                                        <div key={movie.id} className="flex justify-center">
+                                            <div className="relative group">
+                                                {/* Trending Badge for Top 3 */}
+                                                {index < 3 && (
+                                                    <div className={`
                                                     absolute -top-2 -left-2 z-10 
                                                     px-3 py-1 rounded-full text-xs font-bold text-white
                                                     shadow-lg transform group-hover:scale-110 transition-transform duration-300
                                                     ${index === 0
-                                                        ? 'bg-yellow-500'
-                                                        : index === 1
-                                                            ? 'bg-gray-500'
-                                                            : 'bg-amber-700'
-                                                    }
+                                                            ? 'bg-yellow-500'
+                                                            : index === 1
+                                                                ? 'bg-gray-500'
+                                                                : 'bg-amber-700'
+                                                        }
                                                 `}>
-                                                    #{index + 1}
-                                                </div>
-                                            )}
-                                            <MovieCard {...movie} />
+                                                        #{index + 1}
+                                                    </div>
+                                                )}
+                                                <MovieCard {...movie} />
+                                            </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    ))}
+                                </div>
                             </div>
                         ) : (
                             // Empty State
@@ -124,7 +149,7 @@ const TrendingSection = () => {
                                     Check back later for updates.
                                 </p>
                                 <button
-                                    onClick={fetchData}
+                                    onClick={() => fetchData(trendType)}
                                     className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
                                 >
                                     Try Again

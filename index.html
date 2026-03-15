@@ -12,11 +12,22 @@
             const search = window.location.search;
             if (!search.startsWith("?/")) return;
 
-            const decoded = search
-                .replace("?/", "/")
-                .replace(/~and~/g, "&");
+            const raw = search.slice(2);
+            const [rawPath, ...rawQueryParts] = raw.split("&");
+            const normalizedPath = rawPath.split("/").filter(Boolean).join("/");
+            const decodedQuery = rawQueryParts.join("&").replace(/~and~/g, "&");
+            const basePath = window.location.pathname.replace(/\/+$/, "");
 
-            const url = window.location.pathname + decoded + window.location.hash;
+            let url = `${basePath}/${normalizedPath}`;
+            if (!normalizedPath) {
+                url = `${basePath}/`;
+            }
+            if (decodedQuery) {
+                url += `?${decodedQuery}`;
+            }
+            if (window.location.hash) {
+                url += window.location.hash;
+            }
             window.history.replaceState(null, null, url);
         })();
     </script>
